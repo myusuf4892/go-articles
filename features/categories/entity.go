@@ -7,7 +7,7 @@ type Core struct {
 
 type Business interface {
 	AddCtgy(dataCtgy Core) (response string, err error)
-	GetCtgy() (dataCtgy Core, err error)
+	GetCtgy() (dataCtgy []Core, err error)
 }
 
 type Data interface {

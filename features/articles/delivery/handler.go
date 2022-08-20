@@ -30,12 +30,8 @@ func (h *PostHandler) Create(c echo.Context) error {
 
 	res, err := h.postBusiness.AddPost(dataCore)
 
-	if res != "can't data input" {
-		return c.JSON(helper.ResponseInternalServerError(err.Error()))
-	}
-
 	if res == "can't data input" {
-		return c.JSON(helper.ResponseBadRequest(res))
+		return c.JSON(helper.ResponseBadRequest(err.Error()))
 	}
 
 	return c.JSON(helper.ResponseCreateSuccess(res))
