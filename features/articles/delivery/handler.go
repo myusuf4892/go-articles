@@ -4,6 +4,7 @@ import (
 	"articles/app/helper"
 	"articles/features/articles"
 	"articles/features/articles/delivery/request"
+	"articles/features/articles/delivery/response"
 
 	"github.com/labstack/echo/v4"
 )
@@ -29,7 +30,7 @@ func (h *PostHandler) Create(c echo.Context) error {
 
 	res, err := h.postBusiness.AddPost(dataCore)
 
-	if res == "error server" {
+	if res != "can't data input" {
 		return c.JSON(helper.ResponseInternalServerError(err.Error()))
 	}
 
@@ -38,4 +39,15 @@ func (h *PostHandler) Create(c echo.Context) error {
 	}
 
 	return c.JSON(helper.ResponseCreateSuccess(res))
+}
+
+func (h *PostHandler) Get(c echo.Context) error {
+	res, err := h.postBusiness.GetPost()
+	if err == echo.ErrInternalServerError {
+		return c.JSON(helper.ResponseInternalServerError(err.Error()))
+	}
+	if err != nil {
+		return c.JSON(helper.ResponseBadRequest(err.Error()))
+	}
+	return c.JSON(helper.ResponseStatusOkWithData("get data articles success", response.FromCoreToList(res)))
 }

@@ -1,0 +1,16 @@
+mode: set
+articles/features/articles/business/usecase.go:9.67,13.2 1 1
+articles/features/articles/business/usecase.go:15.79,17.14 2 1
+articles/features/articles/business/usecase.go:22.2,23.17 2 1
+articles/features/articles/business/usecase.go:17.14,20.3 2 1
+articles/features/articles/business/usecase.go:26.67,28.16 2 1
+articles/features/articles/business/usecase.go:31.2,31.17 1 1
+articles/features/articles/business/usecase.go:28.16,30.3 1 1
+articles/features/articles/data/model.go:17.45,27.2 1 1
+articles/features/articles/data/model.go:29.49,31.24 2 1
+articles/features/articles/data/model.go:34.2,34.15 1 1
+articles/features/articles/data/model.go:31.24,33.3 1 1
+articles/features/articles/data/model.go:37.44,45.2 1 1
+articles/features/articles/data/query.go:13.50,17.2 1 1
+articles/features/articles/data/query.go:19.79,25.2 3 1
+articles/features/articles/data/query.go:27.71,35.2 4 1

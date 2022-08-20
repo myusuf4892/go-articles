@@ -12,7 +12,10 @@ func New(present factory.Presenter) *echo.Echo {
 	e.Pre(helper.RemoveTrailingSlash())
 
 	e.Use(helper.CorsMiddleware())
-
+	// routes articles
 	e.POST("/articles", present.ArticlePresenter.Create)
+	e.GET("/articles", present.ArticlePresenter.Get)
+	// routes categories
+
 	return e
 }

@@ -2,22 +2,18 @@ package business
 
 import "articles/features/articles"
 
-type articleUseCase struct {
+type postUseCase struct {
 	postData articles.Data
 }
 
 func NewArticleBusiness(dataPost articles.Data) articles.Business {
-	return &articleUseCase{
+	return &postUseCase{
 		postData: dataPost,
 	}
 }
 
-func (uc *articleUseCase) AddPost(dataReq articles.Core) (res string, err error) {
+func (uc *postUseCase) AddPost(dataReq articles.Core) (res string, err error) {
 	row, err := uc.postData.Insert(dataReq)
-	if err != nil {
-		res = "error server"
-		return res, err
-	}
 	if row == 0 {
 		res = "can't data input"
 		return res, err
@@ -27,10 +23,10 @@ func (uc *articleUseCase) AddPost(dataReq articles.Core) (res string, err error)
 	return res, nil
 }
 
-func (uc *articleUseCase) GetPost() (res []articles.Core, err error) {
+func (uc *postUseCase) GetPost() (res []articles.Core, err error) {
 	res, err = uc.postData.Get()
 	if err != nil {
-		return nil, err
+		return []articles.Core{}, err
 	}
 	return res, nil
 }

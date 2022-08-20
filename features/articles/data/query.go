@@ -6,17 +6,17 @@ import (
 	"gorm.io/gorm"
 )
 
-type mysqlArticleRepository struct {
+type mysqlPostRepo struct {
 	db *gorm.DB
 }
 
 func NewArticleRepo(conn *gorm.DB) articles.Data {
-	return &mysqlArticleRepository{
+	return &mysqlPostRepo{
 		db: conn,
 	}
 }
 
-func (repo *mysqlArticleRepository) Insert(dataReq articles.Core) (row int, err error) {
+func (repo *mysqlPostRepo) Insert(dataReq articles.Core) (row int, err error) {
 	data := fromCore(&dataReq)
 
 	srv := repo.db.Create(&data)
@@ -24,7 +24,7 @@ func (repo *mysqlArticleRepository) Insert(dataReq articles.Core) (row int, err 
 	return int(srv.RowsAffected), srv.Error
 }
 
-func (repo *mysqlArticleRepository) Get() (dataRes []articles.Core, err error) {
+func (repo *mysqlPostRepo) Get() (dataRes []articles.Core, err error) {
 	data := []Article{}
 
 	srv := repo.db.Preload("Category").Find(&data)

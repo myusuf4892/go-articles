@@ -20,6 +20,7 @@ func (post *Article) toCore() articles.Core {
 		Title:      post.Title,
 		CategoryID: post.CategoryID,
 		Category: articles.Category{
+			ID:   int(post.Category.ID),
 			Name: post.Category.Name,
 		},
 	}
