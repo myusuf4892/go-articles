@@ -1,10 +1,10 @@
-# News App
+# Article Posts
 
 <!-- ABOUT THE PROJECT -->
 
 ## 💻 About The Project
 
-News app can posting articles.
+Article Posts can posting articles.
 
 Features in Articles :
 
