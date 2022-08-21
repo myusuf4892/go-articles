@@ -17,11 +17,11 @@ func NewCategoryBusiness(dataCtgy categories.Data) categories.Business {
 func (uc *ctgyUseCase) AddCtgy(dataReq categories.Core) (res string, err error) {
 	row, err := uc.ctgyData.Insert(dataReq)
 	if row == 0 {
-		res = "can't data input"
+		res = "400"
 		return res, err
 	}
 
-	res = "categories input success"
+	res = "201"
 	return res, nil
 }
 

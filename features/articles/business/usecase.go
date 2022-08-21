@@ -15,11 +15,11 @@ func NewArticleBusiness(dataPost articles.Data) articles.Business {
 func (uc *postUseCase) AddPost(dataReq articles.Core) (res string, err error) {
 	row, err := uc.postData.Insert(dataReq)
 	if row == 0 {
-		res = "can't data input"
+		res = "400"
 		return res, err
 	}
 
-	res = "article post success"
+	res = "201"
 	return res, nil
 }
 

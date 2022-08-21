@@ -23,25 +23,22 @@ func (h *CtgyHandler) Create(c echo.Context) error {
 	dataReq := request.Category{}
 	errBind := c.Bind(&dataReq)
 	if errBind != nil {
-		return c.JSON(helper.ResponseBadRequest("request input failed"))
+		return c.JSON(helper.ResponseBadRequest("check your input, request input failed"))
 	}
 
 	dataCore := request.ToCore(dataReq)
 
 	res, err := h.ctgyBusiness.AddCtgy(dataCore)
 
-	if res == "can't data input" {
+	if res == "400" {
 		return c.JSON(helper.ResponseBadRequest(err.Error()))
 	}
 
-	return c.JSON(helper.ResponseCreateSuccess(res))
+	return c.JSON(helper.ResponseCreateSuccess("categories input success"))
 }
 
 func (h *CtgyHandler) Get(c echo.Context) error {
 	res, err := h.ctgyBusiness.GetCtgy()
-	if err == echo.ErrInternalServerError {
-		return c.JSON(helper.ResponseInternalServerError(err.Error()))
-	}
 	if err != nil {
 		return c.JSON(helper.ResponseBadRequest(err.Error()))
 	}

@@ -26,7 +26,7 @@ func TestAddPostSuccess(t *testing.T) {
 		row, err := srv.AddPost(dataReq)
 
 		assert.Nil(t, err)
-		assert.Equal(t, "article post success", row)
+		assert.Equal(t, "201", row)
 		repo.AssertExpectations(t)
 	})
 }
@@ -47,7 +47,7 @@ func TestAddPostFailed(t *testing.T) {
 		row, err := srv.AddPost(dataReq)
 
 		assert.NotNil(t, err)
-		assert.Equal(t, "can't data input", row)
+		assert.Equal(t, "400", row)
 	})
 }
 

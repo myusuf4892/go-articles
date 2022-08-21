@@ -13,7 +13,7 @@ var dbTest = config.InitDBTest()
 
 type Category struct {
 	gorm.Model
-	Name string
+	Name string `gorm:"unique;not null"`
 }
 
 func TestInsertSuccess(t *testing.T) {

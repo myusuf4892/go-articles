@@ -8,7 +8,7 @@ import (
 
 type Category struct {
 	gorm.Model
-	Name string
+	Name string `gorm:"unique;not null"`
 }
 
 func (ctgy *Category) toCore() categories.Core {
