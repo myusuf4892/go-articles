@@ -11,7 +11,7 @@ func TestResponseCategory(t *testing.T) {
 		Name: "success-story",
 	}
 
-	FromCore(dataRes)
+	FromCoreToResponse(dataRes)
 }
 
 func TestResponseListCategories(t *testing.T) {
@@ -26,5 +26,5 @@ func TestResponseListCategories(t *testing.T) {
 		},
 	}
 
-	FromCoreToList(dataRes)
+	FromCoreToListResponse(dataRes)
 }

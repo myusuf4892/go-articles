@@ -6,11 +6,11 @@ type Core struct {
 }
 
 type Business interface {
-	AddCtgy(dataCtgy Core) (response string, err error)
-	GetCtgy() (dataCtgy []Core, err error)
+	AddCategory(dataCategory Core) (response string, err error)
+	GetCategory() (dataCategory []Core, err error)
 }
 
 type Data interface {
-	Insert(dataCtgy Core) (row int, err error)
-	Get() (dataCtgy []Core, err error)
+	Insert(dataCategory Core) (row int, err error)
+	Get() (dataCategory []Core, err error)
 }

@@ -26,7 +26,7 @@ func (h *PostHandler) Create(c echo.Context) error {
 		return c.JSON(helper.ResponseBadRequest("check your input, request input failed"))
 	}
 
-	dataCore := request.ToCore(dataReq)
+	dataCore := request.RequestToCore(dataReq)
 
 	res, err := h.postBusiness.AddPost(dataCore)
 
@@ -43,5 +43,5 @@ func (h *PostHandler) Get(c echo.Context) error {
 	if err != nil {
 		return c.JSON(helper.ResponseBadRequest("Failed Get all Posting"))
 	}
-	return c.JSON(helper.ResponseStatusOkWithData("get data articles success", response.FromCoreToList(res)))
+	return c.JSON(helper.ResponseStatusOkWithData("get data articles success", response.FromCoreToListResponse(res)))
 }

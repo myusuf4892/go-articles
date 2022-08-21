@@ -7,17 +7,17 @@ type Category struct {
 	Name string `json:"name"`
 }
 
-func FromCore(data categories.Core) Category {
+func FromCoreToResponse(data categories.Core) Category {
 	return Category{
 		ID:   data.ID,
 		Name: data.Name,
 	}
 }
 
-func FromCoreToList(data []categories.Core) []Category {
+func FromCoreToListResponse(data []categories.Core) []Category {
 	result := []Category{}
 	for key := range data {
-		result = append(result, FromCore(data[key]))
+		result = append(result, FromCoreToResponse(data[key]))
 	}
 	return result
 }

@@ -27,7 +27,7 @@ func TestInsertSuccess(t *testing.T) {
 }
 
 func TestInsertFailed(t *testing.T) {
-	dbTest.AutoMigrate(&Category{})
+	// dbTest.AutoMigrate(&Category{})
 
 	repo := NewCategoryRepo(dbTest)
 
@@ -43,7 +43,7 @@ func TestInsertFailed(t *testing.T) {
 }
 
 func TestGetSuccess(t *testing.T) {
-	dbTest.AutoMigrate(&Category{})
+	// dbTest.AutoMigrate(&Category{})
 
 	mockCategory := categories.Core{
 		Name: "success-story",

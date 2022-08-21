@@ -6,7 +6,7 @@ type Category struct {
 	Name string `json:"name" form:"name"`
 }
 
-func ToCore(dataReq Category) categories.Core {
+func RequestToCore(dataReq Category) categories.Core {
 	core := categories.Core{
 		Name: dataReq.Name,
 	}

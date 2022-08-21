@@ -17,7 +17,7 @@ func NewArticleRepo(conn *gorm.DB) articles.Data {
 }
 
 func (repo *mysqlPostRepo) Insert(dataReq articles.Core) (row int, err error) {
-	data := fromCore(&dataReq)
+	data := fromCoreToRepo(&dataReq)
 
 	srv := repo.db.Create(&data)
 
@@ -29,7 +29,7 @@ func (repo *mysqlPostRepo) Get() (dataRes []articles.Core, err error) {
 
 	srv := repo.db.Preload("Category").Find(&data)
 
-	dataRes = toCoreList(data)
+	dataRes = repoToCoreList(data)
 
 	return dataRes, srv.Error
 }

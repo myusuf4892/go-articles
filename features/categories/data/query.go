@@ -17,7 +17,7 @@ func NewCategoryRepo(conn *gorm.DB) categories.Data {
 }
 
 func (repo *mysqlCategoryRepo) Insert(dataReq categories.Core) (row int, err error) {
-	data := fromCore(&dataReq)
+	data := fromCoreToRepo(&dataReq)
 
 	srv := repo.db.Create(&data)
 
@@ -29,7 +29,7 @@ func (repo *mysqlCategoryRepo) Get() (dataRes []categories.Core, err error) {
 
 	srv := repo.db.Find(&data)
 
-	dataRes = toCoreList(data)
+	dataRes = repoToCoreList(data)
 
 	return dataRes, srv.Error
 }

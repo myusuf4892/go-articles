@@ -67,7 +67,7 @@ func TestGetSuccess(t *testing.T) {
 		},
 	}
 
-	data := fromCore(&mockArticle)
+	data := fromCoreToRepo(&mockArticle)
 
 	dbTest.Save(&data)
 	repo := NewArticleRepo(dbTest)

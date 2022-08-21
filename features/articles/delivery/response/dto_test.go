@@ -16,7 +16,7 @@ func TestResponseArticle(t *testing.T) {
 		},
 	}
 
-	FromCore(dataRes)
+	FromCoreToResponse(dataRes)
 }
 
 func TestResponseListArticles(t *testing.T) {
@@ -41,5 +41,5 @@ func TestResponseListArticles(t *testing.T) {
 		},
 	}
 
-	FromCoreToList(dataRes)
+	FromCoreToListResponse(dataRes)
 }
