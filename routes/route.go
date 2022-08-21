@@ -16,6 +16,7 @@ func New(present factory.Presenter) *echo.Echo {
 	e.POST("/articles", present.ArticlePresenter.Create)
 	e.GET("/articles", present.ArticlePresenter.Get)
 	// routes categories
-
+	e.POST("/categories", present.CategoryPresenter.Create)
+	e.GET("/categories", present.CategoryPresenter.Get)
 	return e
 }
