@@ -7,5 +7,5 @@ func TestRequestCategory(t *testing.T) {
 		Name: "success-story",
 	}
 
-	ToCore(dataReq)
+	RequestToCore(dataReq)
 }

@@ -13,7 +13,7 @@ type Category struct {
 	Name string `json:"name"`
 }
 
-func FromCore(data articles.Core) Article {
+func FromCoreToResponse(data articles.Core) Article {
 	return Article{
 		ID:    data.ID,
 		Title: data.Title,
@@ -24,10 +24,10 @@ func FromCore(data articles.Core) Article {
 	}
 }
 
-func FromCoreToList(data []articles.Core) []Article {
+func FromCoreToListResponse(data []articles.Core) []Article {
 	result := []Article{}
 	for key := range data {
-		result = append(result, FromCore(data[key]))
+		result = append(result, FromCoreToResponse(data[key]))
 	}
 	return result
 }

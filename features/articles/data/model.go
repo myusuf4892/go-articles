@@ -26,7 +26,7 @@ func (post *Article) toCore() articles.Core {
 	}
 }
 
-func toCoreList(data []Article) []articles.Core {
+func repoToCoreList(data []Article) []articles.Core {
 	result := []articles.Core{}
 	for key := range data {
 		result = append(result, data[key].toCore())
@@ -34,7 +34,7 @@ func toCoreList(data []Article) []articles.Core {
 	return result
 }
 
-func fromCore(post *articles.Core) Article {
+func fromCoreToRepo(post *articles.Core) Article {
 	return Article{
 		Title:      post.Title,
 		CategoryID: post.CategoryID,

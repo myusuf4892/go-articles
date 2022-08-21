@@ -10,5 +10,5 @@ func TestRequestArticle(t *testing.T) {
 		CategoryID: 1,
 	}
 
-	ToCore(dataReq)
+	RequestToCore(dataReq)
 }

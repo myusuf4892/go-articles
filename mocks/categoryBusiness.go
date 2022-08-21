@@ -6,11 +6,11 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-type CtgyUseCase struct {
+type CategoryUseCase struct {
 	mock.Mock
 }
 
-func (m *CtgyUseCase) AddCtgy(dataReq categories.Core) (res string, err error) {
+func (m *CategoryUseCase) AddCategory(dataReq categories.Core) (res string, err error) {
 	ret := m.Called(dataReq)
 
 	var r0 string
@@ -30,7 +30,7 @@ func (m *CtgyUseCase) AddCtgy(dataReq categories.Core) (res string, err error) {
 	return r0, r1
 }
 
-func (m *CtgyUseCase) GetCtgy() (dataPost []categories.Core, err error) {
+func (m *CategoryUseCase) GetCategory() (dataPost []categories.Core, err error) {
 	ret := m.Called()
 
 	var r0 []categories.Core

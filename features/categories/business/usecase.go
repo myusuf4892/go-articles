@@ -2,20 +2,24 @@ package business
 
 import (
 	"articles/features/categories"
+	"errors"
 )
 
-type ctgyUseCase struct {
-	ctgyData categories.Data
+type categoryUseCase struct {
+	categoryData categories.Data
 }
 
 func NewCategoryBusiness(dataCtgy categories.Data) categories.Business {
-	return &ctgyUseCase{
-		ctgyData: dataCtgy,
+	return &categoryUseCase{
+		categoryData: dataCtgy,
 	}
 }
 
-func (uc *ctgyUseCase) AddCtgy(dataReq categories.Core) (res string, err error) {
-	row, err := uc.ctgyData.Insert(dataReq)
+func (uc *categoryUseCase) AddCategory(dataReq categories.Core) (res string, err error) {
+	if dataReq.Name == "" {
+		return "400", errors.New("must be filled")
+	}
+	row, err := uc.categoryData.Insert(dataReq)
 	if row == 0 {
 		res = "400"
 		return res, err
@@ -25,8 +29,8 @@ func (uc *ctgyUseCase) AddCtgy(dataReq categories.Core) (res string, err error) 
 	return res, nil
 }
 
-func (uc *ctgyUseCase) GetCtgy() (res []categories.Core, err error) {
-	res, err = uc.ctgyData.Get()
+func (uc *categoryUseCase) GetCategory() (res []categories.Core, err error) {
+	res, err = uc.categoryData.Get()
 	if err != nil {
 		return []categories.Core{}, err
 	}

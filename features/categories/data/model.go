@@ -18,7 +18,7 @@ func (ctgy *Category) toCore() categories.Core {
 	}
 }
 
-func toCoreList(data []Category) []categories.Core {
+func repoToCoreList(data []Category) []categories.Core {
 	result := []categories.Core{}
 	for key := range data {
 		result = append(result, data[key].toCore())
@@ -26,7 +26,7 @@ func toCoreList(data []Category) []categories.Core {
 	return result
 }
 
-func fromCore(ctgy *categories.Core) Category {
+func fromCoreToRepo(ctgy *categories.Core) Category {
 	return Category{
 		Name: ctgy.Name,
 	}

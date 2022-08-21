@@ -39,10 +39,10 @@ func TestCreateCategory(t *testing.T) {
 	}
 
 	e := echo.New()
-	usecase := new(mocks.CtgyUseCase)
+	usecase := new(mocks.CategoryUseCase)
 
 	t.Run("Test Create Category Success", func(t *testing.T) {
-		usecase.On("AddCtgy", mock.Anything).Return("201", nil).Once()
+		usecase.On("AddCategory", mock.Anything).Return("201", nil).Once()
 
 		srv := NewCategoryHandler(usecase)
 
@@ -67,7 +67,7 @@ func TestCreateCategory(t *testing.T) {
 	})
 
 	t.Run("Test Create Category Failed", func(t *testing.T) {
-		usecase.On("AddCtgy", mock.Anything).Return("400", errors.New("error create category"))
+		usecase.On("AddCategory", mock.Anything).Return("400", errors.New("error create category"))
 
 		srv := NewCategoryHandler(usecase)
 
@@ -120,7 +120,7 @@ func TestCreateCategory(t *testing.T) {
 
 func TestGetCategory(t *testing.T) {
 	e := echo.New()
-	usecase := new(mocks.CtgyUseCase)
+	usecase := new(mocks.CategoryUseCase)
 
 	returnData := []categories.Core{
 		{
@@ -132,7 +132,7 @@ func TestGetCategory(t *testing.T) {
 	returnDataFail := []categories.Core{}
 
 	t.Run("Test Get Category Success", func(t *testing.T) {
-		usecase.On("GetCtgy", mock.Anything).Return(returnData, nil).Once()
+		usecase.On("GetCategory", mock.Anything).Return(returnData, nil).Once()
 		srv := NewCategoryHandler(usecase)
 
 		req := httptest.NewRequest(http.MethodGet, "/articles", nil)
@@ -155,7 +155,7 @@ func TestGetCategory(t *testing.T) {
 	})
 
 	t.Run("Test Get Category Failed", func(t *testing.T) {
-		usecase.On("GetCtgy", mock.Anything).Return(returnDataFail, errors.New("Failed Get all Category")).Once()
+		usecase.On("GetCategory", mock.Anything).Return(returnDataFail, errors.New("Failed Get all Category")).Once()
 		srv := NewCategoryHandler(usecase)
 
 		req := httptest.NewRequest(http.MethodGet, "/articles", nil)

@@ -7,7 +7,7 @@ type Article struct {
 	CategoryID int    `json:"category_id" form:"category_id"`
 }
 
-func ToCore(dataReq Article) articles.Core {
+func RequestToCore(dataReq Article) articles.Core {
 	core := articles.Core{
 		Title:      dataReq.Title,
 		CategoryID: dataReq.CategoryID,

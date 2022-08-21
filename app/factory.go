@@ -5,16 +5,16 @@ import (
 	postRepo "articles/features/articles/data"
 	postHandler "articles/features/articles/delivery"
 
-	ctgyUseCase "articles/features/categories/business"
-	ctgyRepo "articles/features/categories/data"
-	ctgyHandler "articles/features/categories/delivery"
+	categoryUseCase "articles/features/categories/business"
+	categoryRepo "articles/features/categories/data"
+	categoryHandler "articles/features/categories/delivery"
 
 	"gorm.io/gorm"
 )
 
 type Presenter struct {
 	ArticlePresenter  *postHandler.PostHandler
-	CategoryPresenter *ctgyHandler.CtgyHandler
+	CategoryPresenter *categoryHandler.CategoryHandler
 }
 
 func InitFactory(dbConn *gorm.DB) Presenter {
@@ -22,12 +22,12 @@ func InitFactory(dbConn *gorm.DB) Presenter {
 	postBusiness := postUseCase.NewArticleBusiness(postData)
 	postDelivery := postHandler.NewArticleHandler(postBusiness)
 
-	ctgyData := ctgyRepo.NewCategoryRepo(dbConn)
-	ctgyBusiness := ctgyUseCase.NewCategoryBusiness(ctgyData)
-	ctgyDelivery := ctgyHandler.NewCategoryHandler(ctgyBusiness)
+	categoryData := categoryRepo.NewCategoryRepo(dbConn)
+	categoryBusiness := categoryUseCase.NewCategoryBusiness(categoryData)
+	categoryDelivery := categoryHandler.NewCategoryHandler(categoryBusiness)
 
 	return Presenter{
 		ArticlePresenter:  postDelivery,
-		CategoryPresenter: ctgyDelivery,
+		CategoryPresenter: categoryDelivery,
 	}
 }
